@@ -1,18 +1,19 @@
 
 before_script:
 - echo Setup here
-- echo FOO=$FOO
+- echo FOO=$FOO BAR=$BAR
 
 install:
 - echo Installing..
-- echo FOO=$FOO
+- echo FOO=$FOO BAR=$BAR
 
 script:
 - echo OK, lets start
-- echo FOO=$FOO
+- echo FOO=$FOO BAR=$BAR
 
 after_script:
 - echo Done, wrap it up
 
 env:
 - FOO=bar
+- FOO=el BAR=baz
