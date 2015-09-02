@@ -11,15 +11,15 @@ before_install:
 
 install:
 - echo Installing..
-- echo "FOO=$FOO BAR=$BAR \n"
+- echo "FOO=$FOO BAR=$BAR"
 
 before_script:
 - echo Setup here
-- echo "FOO=$FOO BAR=$BAR \n"
+- echo "FOO=$FOO BAR=$BAR"
 
 script:
 - echo OK, running build
-- echo "FOO=$FOO BAR=$BAR \n"
+- echo "FOO=$FOO BAR=$BAR"
 
 after_script:
 - echo Done, wrap it up
