@@ -23,5 +23,5 @@
     - '{name}-gh-travis':
         title: Tree Box
         disabled: false
-
+        branch: test
 

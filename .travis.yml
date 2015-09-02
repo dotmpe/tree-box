@@ -1,5 +1,13 @@
 
+# container build
 sudo: false
+
+# build test and release tag only
+branches:
+  only:
+  - test
+  - '/^[0-9]*\.[0-9]*\.[0-9]*/'
+
 
 #
 # Travis compatible build file for jenkins travis-yml
@@ -30,8 +38,6 @@ after_failure:
 after_success:
 - echo Yeah
 
-# travis-yml does not support matrix builds?
 env:
-- FOO=bar
-- FOO=el BAR=baz
+-
 
