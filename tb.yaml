@@ -1,19 +1,27 @@
+
 - defaults:
     name: global
 
-    disabled: true
-    branch: master
     restrict-node: ''
-    project-src: '*.sh,*.rst,*.yaml,.travis.yml'
+
+    branch: master
     vendor-path: dotmpe/tree-box
+    credentials-id: f3711d97-0c02-4099-b16f-d6d7fe13d168
+
+    project-src: '*.sh,*.rst,*.yaml,.travis.yml'
     publish-on-error: true
+    unstable-on-warning: true
+    fail-on-error: true
 
 
+# Define one Jenkins job with name 'tb-gh-travis'
+# It uses a travis 'compatible' builder
 - project:
     name: tb
 
     jobs:
     - '{name}-gh-travis':
-        title: 'Tree Box'
+        title: Tree Box
+        disabled: false
 
 

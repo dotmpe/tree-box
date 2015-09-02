@@ -1,3 +1,21 @@
 
-script: 'echo OK, lets start'
+before_script:
+- echo Setup here
+- echo FOO=$FOO
 
+install:
+- echo Installing..
+- echo FOO=$FOO
+
+script:
+- echo OK, lets start
+- echo FOO=$FOO
+
+after_script:
+- echo Done, wrap it up
+
+#branches:
+#- master
+
+env:
+- FOO=bar
