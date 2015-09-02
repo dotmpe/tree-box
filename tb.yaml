@@ -1,0 +1,19 @@
+- defaults:
+    name: global
+
+    disabled: true
+    branch: master
+    restrict-node: ''
+    project-src: '*.sh,*.rst,*.yaml,.travis.yml'
+    vendor-path: dotmpe/tree-box
+    publish-on-error: true
+
+
+- project:
+    name: tb
+
+    jobs:
+    - '{name}-gh-travis':
+        title: 'Tree Box'
+
+
