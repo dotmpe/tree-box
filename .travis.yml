@@ -1,4 +1,14 @@
 
+#
+# Travis compatible build file for jenkins travis-yml
+#
+
+# supported keys:
+#
+before_install:
+- echo before install 1
+- echo before install 2
+
 install:
 - echo Installing..
 - echo FOO=$FOO BAR=$BAR \n
@@ -13,6 +23,12 @@ script:
 
 after_script:
 - echo Done, wrap it up
+
+after_failure:
+- echo Oh-oh
+
+after_success:
+- echo Yeah
 
 # it does not seem Jenkins travis-yml can handle multiple matrix builds.
 # only builds the latter:
