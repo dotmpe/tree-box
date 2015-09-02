@@ -1,10 +1,10 @@
 
+sudo: false
+
 #
 # Travis compatible build file for jenkins travis-yml
 #
 
-# supported keys:
-#
 before_install:
 - echo before install 1
 - echo before install 2
@@ -30,8 +30,7 @@ after_failure:
 after_success:
 - echo Yeah
 
-# it does not seem Jenkins travis-yml can handle multiple matrix builds.
-# only builds the latter:
+# travis-yml does not support matrix builds?
 env:
-- FOO=bar
 - FOO=el BAR=baz
+
