@@ -1,19 +1,21 @@
 
-before_script:
-- echo Setup here
-- echo FOO=$FOO BAR=$BAR
-
 install:
 - echo Installing..
-- echo FOO=$FOO BAR=$BAR
+- echo FOO=$FOO BAR=$BAR \n
+
+before_script:
+- echo Setup here
+- echo FOO=$FOO BAR=$BAR \n
 
 script:
-- echo OK, lets start
-- echo FOO=$FOO BAR=$BAR
+- echo OK, running build
+- echo FOO=$FOO BAR=$BAR \n
 
 after_script:
 - echo Done, wrap it up
 
+# it does not seem Jenkins travis-yml can handle multiple matrix builds.
+# only builds the latter:
 env:
 - FOO=bar
 - FOO=el BAR=baz
