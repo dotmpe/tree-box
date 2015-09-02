@@ -32,5 +32,6 @@ after_success:
 
 # travis-yml does not support matrix builds?
 env:
+- FOO=bar
 - FOO=el BAR=baz
 
