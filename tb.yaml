@@ -5,6 +5,7 @@
     restrict-node: ''
 
     branch: master
+    vendor-repo: github
     vendor-path: dotmpe/tree-box
     credentials-id: f3711d97-0c02-4099-b16f-d6d7fe13d168
 
@@ -12,6 +13,10 @@
     publish-on-error: true
     unstable-on-warning: true
     fail-on-error: true
+
+    git-browser: auto
+
+    build-meta: 'tb.master.mpe'
 
 
 # Define one Jenkins job with name 'tb-gh-travis'
@@ -21,7 +26,72 @@
 
     jobs:
     - '{name}-gh-travis':
-        title: Tree Box
+        title: 'Tree Box ({branch})'
+        htmlDescription: 'Start TB'
         disabled: false
+        restrict-node: 'master slave1 treebox1'
         branch: test
+
+# FIXME: this is sort of what we'd want: add to downstreams of upstream project
+# later, and from the downstream project config. Not the upstream side.
+#    jobs:
+#    - 'jtb-gh-travis':
+#        downstream: tb-gh-travis
+#
+# maybe introduce some YAML key, for this. jtb-job-stream.. maybe.
+
+
+# Start with one of the downstream projects
+- project:
+    name: tb-home
+
+    jobs:
+    - '{name}-free-git':
+        disabled: false
+        concurrent: false
+        title: 'TB - Userdir ({branch})'
+        htmlDescription: 'Tree Box - Build ~/ ({branch} branch) {build-meta}'
+        git-url: '$HOME_GIT_URL'
+        restrict-node: 'treebox1'
+        builders:
+        - shell: git status
+        - shell: 'whoami && hostname'
+        - shell: 'cd && pwd'
+        - shell: env
+# TODO setup new slave restrict-node: 'treebox1'
+
+
+- project:
+    name: tb-script
+
+    jobs:
+    - '{name}-free-git':
+        disabled: false
+        concurrent: false
+        title: 'TB - Scripts ({branch})'
+        htmlDescription: 'Tree Box - Build ~/bin ({branch} branch) {build-meta}'
+        git-url: '$HOME_GIT_URL'
+        restrict-node: 'treebox1'
+        builders:
+        - shell: git status
+        - shell: 'whoami && hostname'
+        - shell: 'cd && pwd'
+        - shell: env
+
+
+# and another
+- project:
+    name: tb-project
+
+    jobs:
+    - '{name}-free-git':
+        disabled: true
+        concurrent: false
+        title: 'TB - Projectdir ({branch})'
+        htmlDescription: 'Tree Box - Build ~/project ({branch} branch) {build-meta}'
+        git-url: '$MPE_PROJ_GIT_URL'
+        restrict-node: 'treebox1'
+        builders:
+        - shell: git status
+
 
