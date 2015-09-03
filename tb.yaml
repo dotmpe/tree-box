@@ -4,7 +4,7 @@
 
     restrict-node: ''
 
-    branch: master
+    branch: dev
     vendor-repo: github
     vendor-path: dotmpe/tree-box
     credentials-id: f3711d97-0c02-4099-b16f-d6d7fe13d168
@@ -16,7 +16,7 @@
 
     git-browser: auto
 
-    build-meta: 'tb.master.mpe'
+    build-meta: 'tb.dev.mpe'
 
 
 # Define one Jenkins job with name 'tb-gh-travis'
@@ -29,7 +29,7 @@
         title: 'Tree Box ({branch})'
         htmlDescription: 'Start TB'
         disabled: false
-        restrict-node: 'master slave1 treebox1'
+        restrict-node: 'dev slave1 treebox1'
         branch: test
 
 # FIXME: this is sort of what we'd want: add to downstreams of upstream project
