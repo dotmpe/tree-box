@@ -30,7 +30,6 @@
         htmlDescription: 'Start TB'
         disabled: false
         restrict-node: 'dev slave1 treebox1'
-        branch: test
 
 # FIXME: this is sort of what we'd want: add to downstreams of upstream project
 # later, and from the downstream project config. Not the upstream side.
